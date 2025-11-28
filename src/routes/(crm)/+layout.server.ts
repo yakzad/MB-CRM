@@ -7,7 +7,5 @@ export async function load({ cookies }) {
     throw redirect(302, "/login");
   }
 
-  return {
-    token,
-  };
+  return { token };
 }
