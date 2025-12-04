@@ -19,11 +19,15 @@ export async function statsFetch(
   headers.set("Authorization", `Bearer ${access}`);
   headers.set("Content-Type", "application/json");
 
-  // 👇 ESTE ES EL LOG QUE NECESITAMOS
-  console.log("AUTH HEADER ENVIADO →", headers.get("Authorization"));
-
-  return fetch(`${API_BASE}${path}`, {
+  const res = await fetch(`${API_BASE}${path}`, {
     ...options,
     headers,
   });
+
+  if (res.status === 401 || res.status === 403) {
+    // TOKEN YA NO SIRVE → login
+    throw redirect(303, "/login");
+  }
+
+  return res;
 }
