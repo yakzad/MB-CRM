@@ -1,28 +1,50 @@
-import { redirect } from "@sveltejs/kit";
+import { redirect, type Actions } from "@sveltejs/kit";
 
-export const actions = {
-  default: async ({ request, cookies }) => {
-    // Simulación de login correcto
-    const form = await request.formData();
-    const email = form.get("email");
-    const password = form.get("password");
+const API_BASE = "https://api-test.mbsmart.dev/apiv2";
 
-    // Login FALSO para probar — reemplazar más adelante
+export const actions: Actions = {
+  default: async ({ request, cookies, fetch }) => {
+    const formData = await request.formData();
+    const email = formData.get("email");
+    const password = formData.get("password");
+
     if (!email || !password) {
-      return {
-        error: "Missing credentials",
-      };
+      return { error: "Missing credentials" };
     }
 
-    // Guardar token
-    cookies.set("access_token", "123456", {
-      path: "/", // ← MUY IMPORTANTE
+    const res = await fetch(`${API_BASE}/admin/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        User: email,
+        Password: password,
+      }),
+    });
+
+    if (!res.ok) {
+      return { error: "Invalid credentials" };
+    }
+
+    const data = await res.json();
+
+    console.log("LOGIN RESPONSE:", data);
+
+    cookies.set("mb_access_token", data.token, {
+      path: "/",
       httpOnly: true,
       sameSite: "strict",
-      secure: false, // true en producción
+      secure: false,
+      maxAge: 60 * 60 * 24,
+    });
+
+    cookies.set("mb_refresh_token", data.refresh_token, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "strict",
+      secure: false,
       maxAge: 60 * 60 * 24 * 7,
     });
 
-    throw redirect(302, "/dashboard");
+    throw redirect(303, "/crm/dashboard");
   },
 };

@@ -3,7 +3,7 @@
 	let password = "";
 </script>
 
-<div class="min-h-screen flex">
+<div class="min-h-screen flex relative">
 		<h1 class="text-4xl font-bold text-[#1E73BE] absolute top-8 left-8">
 			MB Smart
 		</h1>
@@ -16,7 +16,8 @@
 
 	<div class="w-full md:w-1/2 flex items-center justify-center bg-gray-100">
 
-		<form method="POST" action="/login" class="w-full max-w-sm bg-white p-8 shadow-lg rounded-xl">
+		<form method="POST" class="w-full max-w-sm bg-white p-8 shadow-lg rounded-xl">
+
 			
 			<h1 class="text-2xl font-semibold text-center mb-6">Login</h1>
 
@@ -45,8 +46,7 @@
 				</div>
 
 				<button
-					type="submit"
-					class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+					type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
 				>
 					Login
 				</button>
