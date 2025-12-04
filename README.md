@@ -1,57 +1,63 @@
 # MB-CRM
 
-MB-CRM es un sistema interno desarrollado para MB Smart. Su objetivo es centralizar información de clientes, tickets, agentes y operaciones internas en una plataforma moderna construida con SvelteKit y TailwindCSS.
+MB-CRM is an internal system developed for MB Smart. Its goal is to centralize customer, ticket, agent, and internal operations data into a modern platform built with SvelteKit and TailwindCSS.
 
-## Tecnologías utilizadas
+## Technologies Used
 
 - SvelteKit
 - TailwindCSS
 - TypeScript
 - Vite
 
-## Estructura del proyecto
+## Project Structure
 
-- src/routes/+layout.svelte  
-  Layout global donde se cargan estilos y configuración base.
-- src/routes/(crm)/+layout.svelte  
-  Layout interno del CRM que contiene el sidebar y la navegación.
-- src/routes/login/+page.svelte  
-  Pantalla de login conectada al API nuevo de MB Smart.
-- src/routes/(crm)/dashboard  
-  Vista principal del CRM.
-- src/routes/(crm)/clients  
-  Gestión de clientes.
-- src/routes/(crm)/tickets  
-  Gestión de tickets.
-- src/routes/(crm)/agents  
-  Administración de agentes.
+- **src/routes/+layout.svelte**  
+  Global layout where base styles and configuration are loaded.
 
-## Desarrollo local
+- **src/routes/(crm)/+layout.svelte**  
+  Internal CRM layout containing the sidebar and navigation.
 
-1. Instalar dependencias  
+- **src/routes/login/+page.svelte**  
+  Login screen connected to the new MB Smart API.
+
+- **src/routes/(crm)/dashboard**  
+  Main CRM dashboard view.
+
+- **src/routes/(crm)/clients**  
+  Client management.
+
+- **src/routes/(crm)/tickets**  
+  Ticket management.
+
+- **src/routes/(crm)/agents**  
+  Agent administration.
+
+## Local Development
+
+1. Install dependencies  
    `npm install`
 
-2. Ejecutar ambiente de desarrollo  
+2. Start development environment  
    `npm run dev`
 
-3. Abrir en el navegador  
-   `http://localhost:5173` (o el puerto que indique Vite)
+3. Open in the browser  
+   `http://localhost:5173` (or the port indicated by Vite)
 
-## Objetivo del proyecto
+## Project Objective
 
-Crear un CRM interno rápido, moderno y funcional que permita:
+Create a fast, modern, and functional internal CRM that allows:
 
-- Consultar datos clave
-- Llevar control de tickets
-- Administrar usuarios y agentes
-- Integrarse con el backend oficial de MB Smart
+- Viewing key data
+- Managing tickets
+- Administering users and agents
+- Integrating with the official MB Smart backend
 
-## Estructura futura
+## Future Roadmap
 
-Las siguientes funciones se planean agregar:
+The following features are planned:
 
-- Dashboard dinámico con estadísticas reales
-- Manejo completo de tickets
-- Gestión avanzada de clientes
-- Roles y permisos
-- Integración con sistemas internos
+- Fully dynamic dashboard with real statistics
+- Complete ticket workflow
+- Advanced client management
+- Roles and permissions system
+- Integration with internal tools and services
