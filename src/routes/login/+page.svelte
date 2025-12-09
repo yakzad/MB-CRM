@@ -1,7 +1,9 @@
-<script>
-	let email = "";
-	let password = "";
+<script lang="ts">
+  export let form;
+  let email = "";
+  let password = "";
 </script>
+
 
 <div class="min-h-screen flex relative">
 		<h1 class="text-4xl font-bold text-[#1E73BE] absolute top-8 left-8">
@@ -17,6 +19,8 @@
 	<div class="w-full md:w-1/2 flex items-center justify-center bg-gray-100">
 
 		<form method="POST" class="w-full max-w-sm bg-white p-8 shadow-lg rounded-xl">
+
+
 
 			
 			<h1 class="text-2xl font-semibold text-center mb-6">Login</h1>
@@ -50,6 +54,9 @@
 				>
 					Login
 				</button>
+				{#if form?.error}
+				<p class="text-red-500 text-sm mb-3">{form.error}</p>
+				{/if}
 			</div>
 
 		</form>

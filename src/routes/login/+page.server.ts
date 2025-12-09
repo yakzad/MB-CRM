@@ -1,4 +1,4 @@
-import { redirect, type Actions } from "@sveltejs/kit";
+import { redirect, type Actions, fail } from "@sveltejs/kit";
 
 const API_BASE = "https://api-test.mbsmart.dev/apiv2";
 
@@ -21,11 +21,14 @@ export const actions: Actions = {
       }),
     });
 
-    if (!res.ok) {
-      return { error: "Invalid credentials" };
-    }
-
     const data = await res.json();
+
+    if (!res.ok || !data.token) {
+      return fail(401, {
+        error: "Invalid username or password",
+        email,
+      });
+    }
 
     console.log("LOGIN RESPONSE:", data);
 

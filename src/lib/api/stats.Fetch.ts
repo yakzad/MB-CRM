@@ -25,7 +25,6 @@ export async function statsFetch(
   });
 
   if (res.status === 401 || res.status === 403) {
-    // TOKEN YA NO SIRVE → login
     throw redirect(303, "/login");
   }
 
